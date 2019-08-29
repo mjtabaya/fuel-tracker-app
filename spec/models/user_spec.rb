@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'user'
 require 'spec_helper'
 
