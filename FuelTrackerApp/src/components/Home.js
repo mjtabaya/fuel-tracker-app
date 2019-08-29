@@ -35,7 +35,7 @@ export default class Home extends Component {
     return (
       <div>
       <h1>Add New Refuelling History</h1>
-        <RefuellingHistoryForm />
+        <RefuellingHistoryForm user={this.props.user}/>
       </div>
     )
   }

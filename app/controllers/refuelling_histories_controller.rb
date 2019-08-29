@@ -15,12 +15,23 @@ class RefuellingHistoriesController < ApplicationController
 
   # POST /refuelling_histories
   def create
-    @history = RefuellingHistory.new(history_params)
-
+    @user = User.find(params[:id])
+    @history = @user.refuelling_histories.build(history_params)
+    pp history_params
+    pp "fwoosh"
+    pp @history
+    pp "fweesh"
     if @history.save
-      render json: @history, status: :created, location: @history
+      pp "saccess"
+      session[:user_id] = @user.id
+      render json: {
+        status: :created,
+        user: @user
+      }
     else
-      render json: @history.errors, status: :unprocessable_entity
+      render json: {
+        status: 500
+      }
     end
   end
 
@@ -47,6 +58,7 @@ class RefuellingHistoriesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def history_params
-    params.require(:discord).permit(:id, :name, :link, :population, :game_id)
+    params.require(:refuelling_history)
+          .permit(:date_refuelled, :driver, :vehicle, :odometer_reading, :refuel_location, :liters_of_fuel)
   end
 end
