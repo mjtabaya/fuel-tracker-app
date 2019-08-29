@@ -1,0 +1,22 @@
+# frozen_string_literal: true
+
+RSpec.describe User, type: :model do
+  context 'validations' do
+    it 'should return errors' do
+      user = User.new(email: '', password: '', role: '')
+
+      user.valid?
+      expect(user.errors.size).to eq 3
+    end
+
+    it 'should pass' do
+      user = User.new(
+        email: 'admin@admin.com',
+        password: 'asdfasdf',
+        role: 'manager'
+      )
+
+      expect(user.valid?).to eq true
+    end
+  end
+end
