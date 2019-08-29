@@ -16,7 +16,7 @@ https://docs.google.com/spreadsheets/d/1hs8iJfz_pEagrzLUYfqFdCA7fLmpi7Kl0VBIq3hd
 
 * To-do
 
-- Add specs for react
-- Use semantic-ui for Home, auth components, and Refuel History form
-- Replace Axios calls with Redux
-- Refactor registration form component to use a custom hook
+  * Add specs for react
+  * Use semantic-ui for Home, auth components, and Refuel History form
+  * Replace Axios calls with Redux
+  * Refactor registration form component to use a custom hook
