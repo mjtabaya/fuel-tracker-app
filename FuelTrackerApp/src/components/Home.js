@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import Registration from './auth/Registration';
 import Login from './auth/Login';
+import RefuellingHistoryList from './refuelling_history/RefuellingHistoryList';
 
 export default class Home extends Component {
   constructor(props) {
@@ -25,6 +26,14 @@ export default class Home extends Component {
          });
   }
 
+  logoutButton(){
+    return <button onClick={() => this.handleLogoutClick()}>Logout</button>
+  }
+
+  managerView(){
+    return <RefuellingHistoryList />
+  }
+
   render() {
     return (
       <div>
@@ -32,7 +41,10 @@ export default class Home extends Component {
         <h1>Status: {this.props.loggedInStatus}</h1>
         <h1>Role: {this.props.user.role}</h1>
         {
-          this.props.loggedInStatus === "LOGGED_IN" && <button onClick={() => this.handleLogoutClick()}>Logout</button>
+          this.props.loggedInStatus === "LOGGED_IN" && this.logoutButton()
+        }
+        {
+          this.props.user.role === "manager" && this.managerView()
         }
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
