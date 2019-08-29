@@ -24,6 +24,7 @@
 /node_modules
 /yarn-error.log
 
+/public
 /public/assets
 .byebug_history
 
