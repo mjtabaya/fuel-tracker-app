@@ -3,6 +3,7 @@ import axios from 'axios'
 import Registration from './auth/Registration';
 import Login from './auth/Login';
 import RefuellingHistoryList from './refuelling_history/RefuellingHistoryList';
+import RefuellingHistoryForm from './refuelling_history/RefuellingHistoryForm';
 
 export default class Home extends Component {
   constructor(props) {
@@ -30,6 +31,15 @@ export default class Home extends Component {
     return <button onClick={() => this.handleLogoutClick()}>Logout</button>
   }
 
+  employeeView(){
+    return (
+      <div>
+      <h1>Add New Refuelling History</h1>
+        <RefuellingHistoryForm />
+      </div>
+    )
+  }
+
   managerView(){
     return <RefuellingHistoryList />
   }
@@ -43,11 +53,16 @@ export default class Home extends Component {
         {
           this.props.loggedInStatus === "LOGGED_IN" && this.logoutButton()
         }
+        <h1>User Registration</h1>
+        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        <h1>User Login</h1>
+        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        {
+          this.props.user.role === "employee" && this.employeeView()
+        }
         {
           this.props.user.role === "manager" && this.managerView()
         }
-        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>
     );
   }
