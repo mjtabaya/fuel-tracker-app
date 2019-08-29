@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'user'
 
 RSpec.describe User, type: :model do
   context 'validations' do
