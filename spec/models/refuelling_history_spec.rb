@@ -1,12 +1,24 @@
 # frozen_string_literal: true
 
 require 'refuelling_history'
+require 'user'
 require 'spec_helper'
 
 RSpec.describe RefuellingHistory, type: :model do
+  #fixtures :users, gonna take time to troubleshoot, settle with manual creation
+
+  User.create(
+    first_name: 'Emplo',
+    last_name: 'Yee',
+    email: 'emplo@yee.com',
+    password: 'asdfasdf',
+    password_confirmation: 'asdfasdf'
+  )
+
   context 'validations' do
     it 'should return errors' do
-      history = RefuellingHistory.new(
+      #user = users(:employee)
+      history = User.last.refuelling_histories.new(
         date_refuelled: '',
         driver: '',
         vehicle: '',
@@ -20,7 +32,7 @@ RSpec.describe RefuellingHistory, type: :model do
     end
 
     it 'should pass' do
-      history = RefuellingHistory.new(
+      history = User.last.refuelling_histories.new(
         date_refuelled: Time.now,
         driver: 'Manong',
         vehicle: 'SUV',

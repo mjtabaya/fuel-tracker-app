@@ -15,20 +15,35 @@ RSpec.describe User, type: :model do
       )
 
       user.valid?
-      expect(user.errors.size).to eq 5
+      expect(user.errors.size).to eq 6
     end
 
     it 'should pass' do
       user = User.new(
-        first_name: 'unangalan',
-        last_name: 'hulingalan',
-        role: 'manager',
-        email: 'manager@manager.com',
+        first_name: 'Emplo',
+        last_name: 'Yee',
+        role: 'employee',
+        email: 'emplo@gmail.com',
         password: 'asdfasdf',
         password_confirmation: 'asdfasdf'
       )
 
       expect(user.valid?).to eq true
+    end
+
+    it 'will check for certain roles' do
+      user = User.new(
+        first_name: 'unangalan',
+        last_name: 'hulingalan',
+        role: 'baduser',
+        email: 'baduser@baduser.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      )
+
+      user.valid?
+      has_role_error = user.errors.include?(:role)
+      expect(has_role_error).to eq true
     end
   end
 end
