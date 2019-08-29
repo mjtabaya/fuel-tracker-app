@@ -13,6 +13,7 @@ RSpec.describe User, type: :model do
       user = User.new(
         email: 'admin@admin.com',
         password: 'asdfasdf',
+        password_confirmation: 'asdfasdf',
         role: 'manager'
       )
 
