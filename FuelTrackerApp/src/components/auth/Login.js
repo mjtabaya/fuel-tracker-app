@@ -24,8 +24,7 @@ export default class Login extends Component {
       password
     } = this.state;
 
-    axios.post("http//localhost:3001/sessions",
-      { withCredentials: true },
+    axios.post("http://localhost:3001/sessions",
       {
       user: {
         email: email,

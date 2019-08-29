@@ -30,7 +30,6 @@ export default class Registration extends Component {
     } = this.state;
 
     axios.post("http://localhost:3001/registrations",
-      { withCredentials: true },
       {
         user: {
           first_name: first_name,

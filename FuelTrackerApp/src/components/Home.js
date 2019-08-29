@@ -13,11 +13,11 @@ export default class Home extends Component {
 
   handleSuccessfulAuth(data) {
     this.props.handleLogin(data);
-    this.props.history.push('/dashboard');
+    //this.props.history.push('/dashboard');
   }
 
   handleLogoutClick() {
-    axios.delete('http://localhost:3001/logout', {withCredentials: true})
+    axios.delete('http://localhost:3001/logout')
          .then(response => {
            this.props.handleLogout();
          }).catch(error => {
@@ -30,7 +30,7 @@ export default class Home extends Component {
       <div>
         <h1>Home</h1>
         <h1>Status: {this.props.loggedInStatus}</h1>
-        <button onClick={() => handleLogoutClick()}>Logout</button>
+        <button onClick={() => this.handleLogoutClick()}>Logout</button>
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>
