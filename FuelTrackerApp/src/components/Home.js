@@ -41,7 +41,7 @@ export default class Home extends Component {
   }
 
   managerView(){
-    return <RefuellingHistoryList />
+    return <RefuellingHistoryList histories={this.props.histories}/>
   }
 
   render() {
