@@ -30,7 +30,10 @@ export default class Home extends Component {
       <div>
         <h1>Home</h1>
         <h1>Status: {this.props.loggedInStatus}</h1>
-        <button onClick={() => this.handleLogoutClick()}>Logout</button>
+        <h1>Role: {this.props.user.role}</h1>
+        {
+          this.props.loggedInStatus === "LOGGED_IN" && <button onClick={() => this.handleLogoutClick()}>Logout</button>
+        }
         <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>
