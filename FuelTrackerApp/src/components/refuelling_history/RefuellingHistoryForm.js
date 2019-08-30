@@ -131,7 +131,7 @@ const RefuellingHistoryForm = (props) => {
       </div>
 
 
-      <button type='submit'>Register</button>
+      <button className="ui button right floated" type='submit'>Register</button>
     </form>
   );
 };

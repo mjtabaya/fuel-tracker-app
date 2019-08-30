@@ -61,7 +61,7 @@ export default class Registration extends Component {
 
   render() {
     return (<div className='ui'>
-      <form classname='ui form' onSubmit= {this.handleSubmit}>
+      <form className='ui form' onSubmit= {this.handleSubmit}>
         <div className='field'>
           <label>
             First Name:
@@ -137,7 +137,7 @@ export default class Registration extends Component {
           </label>
         </div>
 
-        <button type='submit'>Register</button>
+        <button className="ui button right floated" type='submit'>Register</button>
       </form>
     </div>);
   }

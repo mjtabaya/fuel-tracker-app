@@ -48,24 +48,34 @@ export default class Login extends Component {
 
   render() {
     return (<div>
-      <form onSubmit= {this.handleSubmit}>
-        <input
-          type='email'
-          name='email'
-          placeholder='Email'
-          value={this.state.email}
-          onChange={this.handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          value={this.state.password}
-          onChange={this.handleChange}
-          required
-        />
-        <button type='login'>Login</button>
+      <form className='ui form' onSubmit= {this.handleSubmit}>
+      <div className='field'>
+        <label>
+          Email:
+          <input
+            type='email'
+            name='email'
+            placeholder='Email'
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
+      </div>
+      <div className='field'>
+        <label>
+          Password:
+          <input
+            type='password'
+            name='password'
+            placeholder='Password'
+            value={this.state.password}
+            onChange={this.handleChange}
+            required
+          />
+        </label>
+      </div>
+        <button className="ui button right floated" type='login'>Login</button>
       </form>
     </div>);
   }

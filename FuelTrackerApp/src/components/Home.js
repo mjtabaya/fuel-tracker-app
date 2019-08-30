@@ -5,6 +5,7 @@ import Registration from './auth/Registration';
 import Login from './auth/Login';
 import RefuellingHistoryList from './refuelling_history/RefuellingHistoryList';
 import RefuellingHistoryForm from './refuelling_history/RefuellingHistoryForm';
+import { Divider } from 'semantic-ui-react'
 
 export default class Home extends Component {
   constructor(props) {
@@ -76,6 +77,7 @@ export default class Home extends Component {
         {
           this.props.loggedInStatus === "NOT_LOGGED_IN" && this.registrationForm()
         }
+        <Divider section />
         {
           this.props.loggedInStatus === "NOT_LOGGED_IN" && this.loginForm()
         }
