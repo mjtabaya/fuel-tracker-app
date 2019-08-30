@@ -10,7 +10,7 @@ export default class Registration extends Component {
     this.state = {
       first_name: '',
       last_name: '',
-      role: '',
+      role: 'employee',
       email: '',
       password: '',
       password_confirmation: '',
@@ -59,23 +59,7 @@ export default class Registration extends Component {
     });
   }
 
-  /*
-  <Dropdown
-  placeholder='Role'
-  name="role"
-  onChange={this.handleChange}
-  selection
-  options={roleOptions}
-    value={this.state.role}
-  />
-  */
-
   render() {
-    const roleOptions = [
-      { value: 'employee', text: 'Employee' },
-      { value: 'manager', text: 'Manager' }
-    ];
-
     return (<div className='ui'>
       <form classname='ui form' onSubmit= {this.handleSubmit}>
         <div className='field'>
@@ -107,14 +91,10 @@ export default class Registration extends Component {
         <div className='field'>
           <label>
             Role:
-            <input
-              type='text'
-              name='role'
-              placeholder='Role (employee/manager)'
-              value={this.state.role}
-              onChange={this.handleChange}
-              required
-            />
+            <select name="role" onChange={this.handleChange} value={this.state.role}>
+              <option value="employee">employee</option>
+              <option value="manager">manager</option>
+            </select>
           </label>
         </div>
         <div className='field'>
