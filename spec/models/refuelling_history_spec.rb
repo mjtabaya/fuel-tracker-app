@@ -6,18 +6,21 @@ require 'spec_helper'
 RSpec.describe RefuellingHistory, type: :model do
   #fixtures :users, gonna take time to troubleshoot, settle with manual creation
 
-  User.create(
-    first_name: 'Emplo',
-    last_name: 'Yee',
-    email: 'emplo@yee.com',
-    password: 'asdfasdf',
-    password_confirmation: 'asdfasdf'
-  )
-
   context 'validations' do
+    before(:each) do
+      User.new(
+        first_name: 'Alpha',
+        last_name: 'Anre',
+        role: 'manager',
+        email: 'alpha@gmail.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      ).save
+    end
+
     it 'should return errors' do
       #user = users(:employee)
-      history = User.last.refuelling_histories.new(
+      history = User.first.refuelling_histories.new(
         date_refuelled: '',
         driver: '',
         vehicle: '',
@@ -31,7 +34,7 @@ RSpec.describe RefuellingHistory, type: :model do
     end
 
     it 'should pass' do
-      history = User.last.refuelling_histories.new(
+      history = User.first.refuelling_histories.new(
         date_refuelled: Time.now,
         driver: 'Manong',
         vehicle: 'SUV',

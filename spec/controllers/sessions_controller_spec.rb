@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
+require 'sessions_controller'
 require 'spec_helper'
 
 RSpec.describe SessionsController, type: :controller do
   context 'POST #create' do
-    skip 'returns a created response' do
-      user = User.create!(
-        first_name: 'Juliet',
-        last_name: 'Tien',
-        role: 'employee',
-        email: 'juliet@gmail.com',
+    it 'returns a created response' do
+      user = {
+        first_name: 'Alpha',
+        last_name: 'Anre',
+        role: 'manager',
+        email: 'alpha@gmail.com',
         password: 'asdfasdf',
         password_confirmation: 'asdfasdf'
-      )
+      }
       post :create, :params => { :user => user }
-      expect(response).to be_success
+      expect(response).to be_created
     end
   end
 end
