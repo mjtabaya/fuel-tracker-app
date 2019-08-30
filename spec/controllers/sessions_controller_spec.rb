@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'sessions_controller'
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe SessionsController, type: :request do
   context 'POST #create' do
@@ -14,8 +14,10 @@ RSpec.describe SessionsController, type: :request do
         password: 'asdfasdf',
         password_confirmation: 'asdfasdf'
       }
-      post :create, :params => { :user => user }
-      expect(response).to be_created
+      post '/registrations', params: { user: user }
+      parsed_body = JSON.parse(response.body)
+      pp parsed_body['status']
+      expect(parsed_body['status']).to be == 'created'
     end
   end
 end

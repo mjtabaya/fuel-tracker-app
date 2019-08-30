@@ -22,7 +22,8 @@ class User < ApplicationRecord
   end
 
   private
+
   def check_valid_roles
-    errors[:role] << "Invalid Role" unless ['employee','manager'].include?(role)
+    errors[:role] << 'Invalid Role' unless %w[employee manager].include?(role)
   end
 end

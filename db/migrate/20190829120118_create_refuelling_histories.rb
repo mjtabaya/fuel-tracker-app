@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateRefuellingHistories < ActiveRecord::Migration[5.2]
   def change
     create_table :refuelling_histories do |t|

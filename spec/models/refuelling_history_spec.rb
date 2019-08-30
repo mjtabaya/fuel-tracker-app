@@ -4,7 +4,7 @@ require 'refuelling_history'
 require 'spec_helper'
 
 RSpec.describe RefuellingHistory, type: :model do
-  #fixtures :users, gonna take time to troubleshoot, settle with manual creation
+  # fixtures :users, gonna take time to troubleshoot, settle with manual creation
 
   context 'validations' do
     before(:each) do
@@ -19,7 +19,7 @@ RSpec.describe RefuellingHistory, type: :model do
     end
 
     it 'should return errors' do
-      #user = users(:employee)
+      # user = users(:employee)
       history = User.first.refuelling_histories.new(
         date_refuelled: '',
         driver: '',

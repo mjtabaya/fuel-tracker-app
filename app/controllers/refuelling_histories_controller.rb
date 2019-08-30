@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class RefuellingHistoriesController < ApplicationController
-  before_action :set_refuelling_history, only: [:show, :update, :destroy]
+  before_action :set_refuelling_history, only: %i[show update destroy]
 
   # GET /refuelling_histories
   def index
