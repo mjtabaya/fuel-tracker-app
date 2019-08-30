@@ -46,4 +46,57 @@ RSpec.describe User, type: :model do
       expect(has_role_error).to eq true
     end
   end
+
+  context 'scope' do
+    before(:each) do
+      User.new(
+        first_name: 'Alpha',
+        last_name: 'Anre',
+        role: 'manager',
+        email: 'alpha@gmail.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      ).save
+      User.new(
+        first_name: 'Beta',
+        last_name: 'Sorn',
+        role: 'manager',
+        email: 'beta@gmail.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      ).save
+      User.new(
+        first_name: 'Charlie',
+        last_name: 'Threo',
+        role: 'employee',
+        email: 'charlie@gmail.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      ).save
+      User.new(
+        first_name: 'Delta',
+        last_name: 'Feower',
+        role: 'employee',
+        email: 'delta@gmail.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      ).save
+      User.new(
+        first_name: 'Echo',
+        last_name: 'Funf',
+        role: 'employee',
+        email: 'echo@gmail.com',
+        password: 'asdfasdf',
+        password_confirmation: 'asdfasdf'
+      ).save
+    end
+
+    it 'should return managers' do
+      expect(User.manager_users.size).to eq(2)
+    end
+
+    it 'should return employees' do
+      expect(User.employee_users.size).to eq(3)
+    end
+  end
 end

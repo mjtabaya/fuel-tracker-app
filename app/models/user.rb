@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  scope :employee_users, -> { where(role: 'employee') }
+  scope :manager_users, -> { where(role: 'manager') }
   has_many :refuelling_histories
   has_secure_password
 
