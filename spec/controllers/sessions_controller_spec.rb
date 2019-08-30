@@ -3,7 +3,7 @@
 require 'sessions_controller'
 require 'spec_helper'
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe SessionsController, type: :request do
   context 'POST #create' do
     it 'returns a created response' do
       user = {
