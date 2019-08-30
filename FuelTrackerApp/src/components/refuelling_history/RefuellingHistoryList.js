@@ -56,12 +56,12 @@ export default class RefuellingHistoryList extends Component {
                   <Table.HeaderCell>Odometer Reading</Table.HeaderCell>
                   <Table.HeaderCell>Refuel Location</Table.HeaderCell>
                   <Table.HeaderCell>Liters of Fuel</Table.HeaderCell>
-                  <Table.HeaderCell>recorded by Employee ID</Table.HeaderCell>
+                  <Table.HeaderCell>Recorded by Employee ID</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
               <Table.Body>
-                {!!this.state.histories.length && this.state.histories.map((history) => (
+                {!!this.state.histories.length && this.state.histories.map((history, i) => (
                     <Table.Row>
                       <Table.Cell>{history.date_refuelled}</Table.Cell>
                       <Table.Cell>{history.driver}</Table.Cell>

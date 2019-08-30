@@ -58,55 +58,85 @@ export default class Registration extends Component {
 
   render() {
     return (<div>
-      <form onSubmit= {this.handleSubmit}>
-        <input
-          type='text'
-          name='first_name'
-          placeholder='First Name'
-          value={this.state.first_name}
-          onChange={this.handleChange}
-          required
-        />
-        <input
-          type='text'
-          name='last_name'
-          placeholder='Last Name'
-          value={this.state.last_name}
-          onChange={this.handleChange}
-          required
-        />
-        <input
-          type='text'
-          name='role'
-          placeholder='Role (employee/manager)'
-          value={this.state.role}
-          onChange={this.handleChange}
-          required
-        />
-        <input
-          type='email'
-          name='email'
-          placeholder='Email'
-          value={this.state.email}
-          onChange={this.handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password'
-          value={this.state.password}
-          onChange={this.handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='password_confirmation'
-          placeholder='Password Confirmation'
-          value={this.state.password_confirmation}
-          onChange={this.handleChange}
-          required
-        />
+      <form classname='ui form' onSubmit= {this.handleSubmit}>
+        <div className='field'>
+          <label>
+            First Name:
+            <input
+              type='text'
+              name='first_name'
+              placeholder='First Name'
+              value={this.state.first_name}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div className='field'>
+          <label>
+            Last Name:
+            <input
+              type='text'
+              name='last_name'
+              placeholder='Last Name'
+              value={this.state.last_name}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div className='field'>
+          <label>
+            Role:
+            <input
+              type='text'
+              name='role'
+              placeholder='Role (employee/manager)'
+              value={this.state.role}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div className='field'>
+          <label>
+            Email:
+            <input
+              type='email'
+              name='email'
+              placeholder='Email'
+              value={this.state.email}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div className='field'>
+          <label>
+            Password:
+            <input
+              type='password'
+              name='password'
+              placeholder='Password'
+              value={this.state.password}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+        </div>
+        <div className='field'>
+          <label>
+            Password Confirmation:
+            <input
+              type='password'
+              name='password_confirmation'
+              placeholder='Password Confirmation'
+              value={this.state.password_confirmation}
+              onChange={this.handleChange}
+              required
+            />
+          </label>
+        </div>
 
         <button type='submit'>Register</button>
       </form>

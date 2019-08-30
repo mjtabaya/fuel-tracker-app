@@ -17,12 +17,7 @@ class RefuellingHistoriesController < ApplicationController
   def create
     @user = User.find(params[:id])
     @history = @user.refuelling_histories.build(history_params)
-    pp history_params
-    pp "fwoosh"
-    pp @history
-    pp "fweesh"
     if @history.save
-      pp "saccess"
       session[:user_id] = @user.id
       render json: {
         status: :created,
