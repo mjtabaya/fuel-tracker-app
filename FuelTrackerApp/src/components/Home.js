@@ -34,7 +34,7 @@ export default class Home extends Component {
   employeeView(){
     return (
       <div>
-      <h1>Add New Refuelling History</h1>
+        <h1>Add New Refuelling History</h1>
         <RefuellingHistoryForm user={this.props.user}/>
       </div>
     )
@@ -44,19 +44,40 @@ export default class Home extends Component {
     return <RefuellingHistoryList histories={this.props.histories}/>
   }
 
+  registrationForm(){
+    return (
+      <div>
+        <h1>User Registration</h1>
+        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+      </div>
+    )
+  }
+
+  loginForm(){
+    return (
+      <div>
+        <h1>User Login</h1>
+        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div>
-        <h1>Home</h1>
         <h1>Status: {this.props.loggedInStatus}</h1>
-        <h1>Role: {this.props.user.role}</h1>
+        {
+          this.props.user.role && <h1>Role: {this.props.user.role}</h1>
+        }
         {
           this.props.loggedInStatus === "LOGGED_IN" && this.logoutButton()
         }
-        <h1>User Registration</h1>
-        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
-        <h1>User Login</h1>
-        <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
+        {
+          this.props.loggedInStatus === "NOT_LOGGED_IN" && this.registrationForm()
+        }
+        {
+          this.props.loggedInStatus === "NOT_LOGGED_IN" && this.loginForm()
+        }
         {
           this.props.user.role === "employee" && this.employeeView()
         }
