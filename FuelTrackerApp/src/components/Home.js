@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import 'semantic-ui-css/semantic.css'
 import Registration from './auth/Registration';
 import Login from './auth/Login';
 import RefuellingHistoryList from './refuelling_history/RefuellingHistoryList';

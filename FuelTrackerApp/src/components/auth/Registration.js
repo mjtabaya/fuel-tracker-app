@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Dropdown } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.css'
 
 export default class Registration extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ export default class Registration extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+
 
   handleSubmit(event){
     const {
@@ -56,8 +59,24 @@ export default class Registration extends Component {
     });
   }
 
+  /*
+  <Dropdown
+  placeholder='Role'
+  name="role"
+  onChange={this.handleChange}
+  selection
+  options={roleOptions}
+    value={this.state.role}
+  />
+  */
+
   render() {
-    return (<div>
+    const roleOptions = [
+      { value: 'employee', text: 'Employee' },
+      { value: 'manager', text: 'Manager' }
+    ];
+
+    return (<div className='ui'>
       <form classname='ui form' onSubmit= {this.handleSubmit}>
         <div className='field'>
           <label>
