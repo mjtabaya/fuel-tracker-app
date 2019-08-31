@@ -53,7 +53,7 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 
 ## Download
 
-You can [download](https://github.com/mjtabaya/fuel-tracker-app/archive/master.zip) the latest installable version of FuelTrackerApp for Windows, macOS and Linux.
+You can [download](https://github.com/mjtabaya/fuel-tracker-app/archive/master.zip) the latest installable version of Fuel Tracker App for Windows, macOS and Linux.
 
 ## Credits
 
