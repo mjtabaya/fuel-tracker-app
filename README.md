@@ -5,7 +5,7 @@
 <h4 align="center">A sample application to meet a technical task.</h4>
 
 <p align="center">
-  <a href="#technical-task>Technical Task</a> •
+  <a href="#technical-task">Technical Task</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#download">Download</a> •
   <a href="#credits">Credits</a> •
