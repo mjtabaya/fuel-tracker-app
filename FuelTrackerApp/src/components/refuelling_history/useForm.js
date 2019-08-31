@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const useForm = (callback) => {
 
   const [values, setValues] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (isSubmitting) {
+      callback();
+    }
+  });
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
-      callback();
+    setIsSubmitting(true);
+    setValues('');
   };
 
   const handleChange = (event) => {
@@ -17,7 +25,7 @@ const useForm = (callback) => {
   return {
     handleChange,
     handleSubmit,
-    values,
+    values
   }
 };
 
