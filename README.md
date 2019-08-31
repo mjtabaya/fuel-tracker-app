@@ -5,12 +5,33 @@
 <h4 align="center">A sample application to meet a technical task.</h4>
 
 <p align="center">
+  <a href="#technical-task>Technical Task</a> •
   <a href="#how-to-use">How To Use</a> •
   <a href="#download">Download</a> •
   <a href="#credits">Credits</a> •
   <a href="#development-logbook">Development Logbook</a>
 </p>
 
+## Technical Task
+
+To build a Rails App to meet the following user stories:
+
+* User Story - 1
+  * As a Employee I need to be able to enter information into an app when I refuel a vehicle So that my company can keep track of this information
+
+* Acceptance Criteria
+  * I need to be able to go to the app (url) and enter in the following information about refueling -- Date, Driver, Vehicle, Odometer Reading, Refuel location, litters of Fuel
+I need to be able to enter and save this information
+
+---
+
+* User Story - 2
+  * As a manager - with log in credentials I need to be able to view refuelling information that other people have entered into the system So that I can view and keep track of that infomation
+
+* Acceptance Criteria
+  * I need to be able to log in with credentials so that I can access the manager section of the system
+  * I need to be able to view refuelling information in the form of a table.
+  * I need to be able to log out of the system
 
 ## How to Use
 
