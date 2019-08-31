@@ -71,7 +71,7 @@ $ rails s -p 3001
 Open the app on your chosen browser with the following url: http://localhost:3000
 
 <p align="center">
-  <img src="./img/first-page.PNG" alt="Registration and Login page" width="738">
+  <img src="./img/first-page.PNG" alt="Registration and Login page">
 </p>
 
 
