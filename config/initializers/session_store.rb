@@ -6,5 +6,5 @@ if Rails.env == 'production'
                                          domain: 'https://mjta-fuel-tracker-app.herokuapp.com'
 else
   Rails.application.config.session_store :cookie_store,
-                                         key: '_authentication_app'
+                                         key: '_fuel_tracker_app'
 end
