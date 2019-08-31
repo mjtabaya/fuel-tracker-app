@@ -58,13 +58,13 @@ $ npm start
 From a second command line:
 
 ```bash
-# Go into the repository's react directory
-$ cd fuel-tracker-app\FuelTrackerApp
+# Go into the repository
+$ cd fuel-tracker-app
 
-# Migrate and Seed database
+# Migrate and Seed the database
 $ rails db:migrate db:seed
 
-# Start Rails from port 3001
+# Start Rails API from port 3001
 $ rails s -p 3001
 ```
 
