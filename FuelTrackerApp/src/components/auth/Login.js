@@ -53,7 +53,12 @@ export default class Login extends Component {
   render() {
     return (<div>
       <form className='ui form' onSubmit= {this.handleSubmit}>
-      {this.state.loginErrors && <p className='error'>{this.state.loginErrors}</p>}
+      {this.state.loginErrors &&
+        <div class="ui negative message">
+          <div class="header">Invalid login</div>
+          <p>{this.state.loginErrors}</p>
+        </div>
+      }
       <div className='field'>
         <label>
           Email:

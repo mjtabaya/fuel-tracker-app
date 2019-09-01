@@ -70,8 +70,7 @@ export default class RefuellingHistoryList extends Component {
       console.log(this.state.histories)
       return (
         <div className='histories'>
-          <h3>Refuelling Histories</h3>
-          <Container text>
+          <h3>Refuelling Histories (click on headers to sort)</h3>
             <Table sortable celled fixed>
               <Table.Header>
                 <Table.Row>
@@ -80,8 +79,8 @@ export default class RefuellingHistoryList extends Component {
                     onClick={this.handleSort('date_refuelled')}
                   >Date Refuelled</Table.HeaderCell>
                   <Table.HeaderCell fullWidth
-                    sorted={column === 'date_refuelled' ? direction : null}
-                    onClick={this.handleSort('date_refuelled')}
+                    sorted={column === 'driver' ? direction : null}
+                    onClick={this.handleSort('driver')}
                   >Driver</Table.HeaderCell>
                   <Table.HeaderCell fullWidth
                     sorted={column === 'vehicle' ? direction : null}
@@ -102,7 +101,7 @@ export default class RefuellingHistoryList extends Component {
                   <Table.HeaderCell fullWidth
                     sorted={column === 'user_id' ? direction : null}
                     onClick={this.handleSort('user_id')}
-                  >Recorded by Employee ID</Table.HeaderCell>
+                  >Logged by Employee</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -121,7 +120,6 @@ export default class RefuellingHistoryList extends Component {
                 }
               </Table.Body>
             </Table>
-          </Container>
         </div>
       );
     }

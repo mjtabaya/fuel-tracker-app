@@ -30,7 +30,8 @@ export default class Home extends Component {
   }
 
   logoutButton(){
-    return <button onClick={() => this.handleLogoutClick()}>Logout</button>
+    return <button className="ui button right floated"
+            onClick={() => this.handleLogoutClick()}>Logout</button>
   }
 
   employeeView(){
@@ -67,7 +68,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Status: {this.props.loggedInStatus}</h1>
+        <h1>Welcome: {this.props.user.first_name}</h1>
         {
           this.props.user.role && <h1>Role: {this.props.user.role}</h1>
         }

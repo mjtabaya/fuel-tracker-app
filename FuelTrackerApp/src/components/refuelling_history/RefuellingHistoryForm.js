@@ -28,6 +28,7 @@ function formReducer(state, action) {
         liters_of_fuel: '',
         isLoading: false,
         error: '',
+        submitted: true
       };
     }
     default:
@@ -44,6 +45,7 @@ const initialState = {
   liters_of_fuel: '',
   isLoading: false,
   error: '',
+  submitted: false
 };
 
 export default function RefuellingHistoryForm(props) {
@@ -57,7 +59,8 @@ export default function RefuellingHistoryForm(props) {
     refuel_location,
     liters_of_fuel,
     isLoading,
-    error } = state;
+    error,
+    submitted } = state;
 
   const clearState = () => {
     document.getElementById('refuelling-history-form').reset();
@@ -97,6 +100,13 @@ export default function RefuellingHistoryForm(props) {
   return (
     <form className="ui form" id='refuelling-history-form' onSubmit={onSubmit}>
       {error && <p className="error">{error}</p>}
+      {submitted && <div className="ui positive message">
+                      <div className="header">
+                        Refuelling log was successful
+                      </div>
+                      <p>You may enter a new entry or let the manager login</p>
+                    </div>
+      }
       <p>Please check the form!</p>
       <div className='field'>
         <label>
