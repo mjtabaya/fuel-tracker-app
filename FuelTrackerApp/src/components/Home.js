@@ -68,7 +68,16 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome: {this.props.user.first_name}</h1>
+        {
+          this.props.loggedInStatus === "NOT_LOGGED_IN" &&
+          <h2 className="ui center aligned icon header">
+            <i className="circular users icon"></i>
+            Fuel Tracker App
+          </h2>
+        }
+        {
+          this.props.loggedInStatus === "LOGGED_IN" && <h1>Welcome {this.props.user.first_name}</h1>
+        }
         {
           this.props.user.role && <h1>Role: {this.props.user.role}</h1>
         }
