@@ -45,8 +45,8 @@ From your command line:
 # Clone this repository
 $ git clone https://github.com/mjtabaya/fuel-tracker-app
 
-# Go into the repository
-$ cd fuel-tracker-app
+# Go into the repository, then react app's directory
+$ cd fuel-tracker-app/FuelTrackerApp
 
 # Install dependencies
 $ npm install
@@ -89,7 +89,7 @@ This software uses the following open source packages:
 - [Semantic](https://semantic-ui.com/)
 - [Node.js](https://nodejs.org/)
 
-## Development Logbook 
+## Development Logbook
 
 https://docs.google.com/spreadsheets/d/1hs8iJfz_pEagrzLUYfqFdCA7fLmpi7Kl0VBIq3hdaPE/edit?usp=drivesdk
 
