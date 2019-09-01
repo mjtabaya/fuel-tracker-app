@@ -34,8 +34,12 @@ export default class Login extends Component {
         if(response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data);
         }
+        if(response.data.error) {
+          this.setState({loginErrors: response.data.error});
+        }
     }).catch(error => {
       console.log("login error", error);
+      this.setState({loginErrors: error})
     });
     event.preventDefault();
   }
@@ -49,6 +53,7 @@ export default class Login extends Component {
   render() {
     return (<div>
       <form className='ui form' onSubmit= {this.handleSubmit}>
+      {this.state.loginErrors && <p className='error'>{this.state.loginErrors}</p>}
       <div className='field'>
         <label>
           Email:

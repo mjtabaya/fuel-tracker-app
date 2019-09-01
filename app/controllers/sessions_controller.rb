@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
         user: user
       }
     else
-      render json: { status: 401 }
+      pp "fwoosh"
+      render json: { status: 401, error: 'Invalid email/password combination' }
     end
   end
 
