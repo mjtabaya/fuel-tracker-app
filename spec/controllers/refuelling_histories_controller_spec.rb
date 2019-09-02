@@ -49,7 +49,7 @@ RSpec.describe RefuellingHistoriesController, type: :request do
       .except('created_at', 'date_refuelled', 'updated_at', 'liters_of_fuel')
     end
 
-    it 'returns status created' do
+    it 'returns a created response' do
       user = User.first
       refuelling_history = {
         date_refuelled: DateTime.now,
