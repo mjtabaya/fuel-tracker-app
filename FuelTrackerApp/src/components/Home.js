@@ -40,15 +40,6 @@ export default class Home extends Component {
          });
   }
 
-  loggedInHeader() {
-    return (
-      <LoggedInHeader
-        user={this.props.user}
-        onClick={()=>this.handleLogoutClick()}
-      />
-    )
-  }
-
   registrationForm(){
     return (
       <ReactModal
@@ -88,7 +79,11 @@ export default class Home extends Component {
           </h2>
         }
         {
-          this.props.loggedInStatus === "LOGGED_IN" && this.loggedInHeader()
+          this.props.loggedInStatus === "LOGGED_IN" &&
+          <LoggedInHeader
+            user={this.props.user}
+            onClick={()=>this.handleLogoutClick()}
+          />
         }
         {
           this.props.loggedInStatus === "NOT_LOGGED_IN" &&
