@@ -3,6 +3,7 @@ import axios from 'axios'
 import 'semantic-ui-css/semantic.css'
 import Registration from './auth/Registration';
 import Login from './auth/Login';
+import LoggedInHeader from './LoggedInHeader';
 import RefuellingHistoryList from './refuelling_history/RefuellingHistoryList';
 import RefuellingHistoryForm from './refuelling_history/RefuellingHistoryForm';
 import { Divider } from 'semantic-ui-react'
@@ -29,22 +30,13 @@ export default class Home extends Component {
          });
   }
 
-  logoutButton(){
-    return <button className="ui button right floated"
-            onClick={() => this.handleLogoutClick()}>Logout</button>
-  }
-
-  employeeView(){
+  loggedInHeader() {
     return (
-      <div>
-        <h1>Add New Refuelling History</h1>
-        <RefuellingHistoryForm user={this.props.user}/>
-      </div>
+      <LoggedInHeader
+        user={this.props.user}
+        onClick={()=>this.handleLogoutClick()}
+      />
     )
-  }
-
-  managerView(){
-    return <RefuellingHistoryList histories={this.props.histories}/>
   }
 
   registrationForm(){
@@ -76,13 +68,10 @@ export default class Home extends Component {
           </h2>
         }
         {
-          this.props.loggedInStatus === "LOGGED_IN" && <h1>Welcome, {this.props.user.first_name}</h1>
-        }
-        {
           this.props.user.role && <h1>Role: {this.props.user.role}</h1>
         }
         {
-          this.props.loggedInStatus === "LOGGED_IN" && this.logoutButton()
+          this.props.loggedInStatus === "LOGGED_IN" && this.loggedInHeader()
         }
         {
           this.props.loggedInStatus === "NOT_LOGGED_IN" && this.registrationForm()
@@ -92,10 +81,10 @@ export default class Home extends Component {
           this.props.loggedInStatus === "NOT_LOGGED_IN" && this.loginForm()
         }
         {
-          this.props.user.role === "employee" && this.employeeView()
+          this.props.user.role === "employee" && <RefuellingHistoryForm user={this.props.user}/>
         }
         {
-          this.props.user.role === "manager" && this.managerView()
+          this.props.user.role === "manager" && <RefuellingHistoryList histories={this.props.histories}/>
         }
       </div>
     );

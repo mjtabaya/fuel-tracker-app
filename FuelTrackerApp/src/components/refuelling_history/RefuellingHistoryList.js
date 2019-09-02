@@ -74,31 +74,31 @@ export default class RefuellingHistoryList extends Component {
             <Table sortable celled fixed>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'date_refuelled' ? direction : null}
                     onClick={this.handleSort('date_refuelled')}
                   >Date Refuelled</Table.HeaderCell>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'driver' ? direction : null}
                     onClick={this.handleSort('driver')}
                   >Driver</Table.HeaderCell>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'vehicle' ? direction : null}
                     onClick={this.handleSort('vehicle')}
                   >Vehicle</Table.HeaderCell>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'odometer_reading' ? direction : null}
                     onClick={this.handleSort('odometer_reading')}
                   >Odometer Reading</Table.HeaderCell>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'refuel_location' ? direction : null}
                     onClick={this.handleSort('refuel_location')}
                   >Refuel Location</Table.HeaderCell>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'liters_of_fuel' ? direction : null}
                     onClick={this.handleSort('liters_of_fuel')}
                   >Liters of Fuel</Table.HeaderCell>
-                  <Table.HeaderCell fullWidth
+                  <Table.HeaderCell
                     sorted={column === 'user_id' ? direction : null}
                     onClick={this.handleSort('user_id')}
                   >Logged by Employee</Table.HeaderCell>
