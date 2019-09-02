@@ -1,5 +1,4 @@
 {
   "name": "fuel-tracker-app",
-  "private": true,
-  "dependencies": {}
+  "private": true
 }

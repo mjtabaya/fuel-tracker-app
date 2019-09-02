@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactModal from 'react-modal';
 import axios from 'axios'
 import 'semantic-ui-css/semantic.css'
 import Registration from './auth/Registration';
@@ -12,11 +13,21 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showModal: false
+    }
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this)
     this.handleLogoutClick = this.handleLogoutClick.bind(this)
   }
 
+  handleOpenModal() { this.setState({ showModal: true}); }
+
+  handleCloseModal() { this.setState({ showModal: false }); }
+
   handleSuccessfulAuth(data) {
+    this.handleCloseModal();
     this.props.handleLogin(data);
   }
 
@@ -40,10 +51,20 @@ export default class Home extends Component {
 
   registrationForm(){
     return (
-      <div>
-        <h1>User Registration</h1>
-        <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/>
-      </div>
+      <ReactModal
+        isOpen={this.state.showModal}
+        contentLabel="Minimal Modal Example"
+      >
+        <button onClick={this.handleCloseModal}
+          className="ui button right floated">
+          Discard Changes
+        </button>
+        <br/><br/>
+        <Registration
+          handleSuccessfulAuth={this.handleSuccessfulAuth}
+          modalClose={this.handleCloseModal}
+        />
+      </ReactModal>
     )
   }
 
@@ -70,7 +91,10 @@ export default class Home extends Component {
           this.props.loggedInStatus === "LOGGED_IN" && this.loggedInHeader()
         }
         {
-          this.props.loggedInStatus === "NOT_LOGGED_IN" && this.registrationForm()
+          this.props.loggedInStatus === "NOT_LOGGED_IN" &&
+            <button onClick={()=>this.handleOpenModal()}
+              className="ui button right floated"
+            >Register</button>
         }
         <Divider section />
         {
@@ -82,6 +106,7 @@ export default class Home extends Component {
         {
           this.props.user.role === "manager" && <RefuellingHistoryList histories={this.props.histories}/>
         }
+        {this.registrationForm()}
       </div>
     );
   }

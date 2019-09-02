@@ -1,37 +1,69 @@
-import React, { Component } from 'react';
+import React, { useReducer } from 'react';
+import useForm from "./useForm";
 import axios from 'axios';
 import { Dropdown } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.css'
 
-export default class Registration extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      first_name: '',
-      last_name: '',
-      role: 'employee',
-      email: '',
-      password: '',
-      password_confirmation: '',
-      registrationErrors: ''
+function formReducer(state, action) {
+  switch (action.type) {
+    case 'field': {
+      return {
+        ...state,
+        [action.fieldName]: action.payload,
+      };
     }
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    case 'submitting': {
+      return {
+        ...state,
+        error: '',
+        isLoading: true,
+      };
+    }
+    case 'success': {
+      return {
+        ...state,
+        date_refuelled: '',
+        driver: '',
+        vehicle: '',
+        odometer_reading: '',
+        refuel_location: '',
+        liters_of_fuel: '',
+        isLoading: false,
+        error: '',
+        submitted: true
+      };
+    }
+    default:
+      return state;
   }
+}
 
+const initialState = {
+  first_name: '',
+  last_name: '',
+  role: 'employee',
+  email: '',
+  password: '',
+  password_confirmation: '',
+  isLoading: false,
+  registrationErrors: '',
+};
 
-  handleSubmit(event){
-    const {
-      first_name,
-      last_name,
-      role,
-      email,
-      password,
-      password_confirmation
-    } = this.state;
+export default function Registration(props) {
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
+  const {
+    first_name,
+    last_name,
+    role,
+    email,
+    password,
+    password_confirmation
+  } = state;
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    dispatch({ type: 'submitting' });
     axios.post("http://localhost:3001/registrations",
       {
         user: {
@@ -45,23 +77,16 @@ export default class Registration extends Component {
       }
     ).then(response => {
         if(response.data.status === 'created') {
-          this.props.handleSuccessfulAuth(response.data);
+          dispatch({ type: 'success' });
+          props.handleSuccessfulAuth(response.data);
         }
     }).catch(error => {
       console.log("registration error", error);
     });
-    event.preventDefault();
   }
 
-  handleChange(event){
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  render() {
     return (<div className='ui'>
-      <form className='ui form' onSubmit= {this.handleSubmit}>
+      <form className='ui form' onSubmit={handleSubmit}>
         <div className='field'>
           <label>
             First Name:
@@ -69,9 +94,14 @@ export default class Registration extends Component {
               type='text'
               name='first_name'
               placeholder='First Name'
-              value={this.state.first_name}
-              onChange={this.handleChange}
               required
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'first_name',
+                  payload: e.currentTarget.value,
+                })
+              }
             />
           </label>
         </div>
@@ -82,16 +112,28 @@ export default class Registration extends Component {
               type='text'
               name='last_name'
               placeholder='Last Name'
-              value={this.state.last_name}
-              onChange={this.handleChange}
               required
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'last_name',
+                  payload: e.currentTarget.value,
+                })
+              }
             />
           </label>
         </div>
         <div className='field'>
           <label>
             Role:
-            <select name="role" onChange={this.handleChange} value={this.state.role}>
+            <select name="role"
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'role',
+                  payload: e.currentTarget.value,
+                })
+              }>
               <option value="employee">employee</option>
               <option value="manager">manager</option>
             </select>
@@ -104,9 +146,14 @@ export default class Registration extends Component {
               type='email'
               name='email'
               placeholder='Email'
-              value={this.state.email}
-              onChange={this.handleChange}
               required
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'email',
+                  payload: e.currentTarget.value,
+                })
+              }
             />
           </label>
         </div>
@@ -117,9 +164,14 @@ export default class Registration extends Component {
               type='password'
               name='password'
               placeholder='Password'
-              value={this.state.password}
-              onChange={this.handleChange}
               required
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'password',
+                  payload: e.currentTarget.value,
+                })
+              }
             />
           </label>
         </div>
@@ -130,15 +182,19 @@ export default class Registration extends Component {
               type='password'
               name='password_confirmation'
               placeholder='Password Confirmation'
-              value={this.state.password_confirmation}
-              onChange={this.handleChange}
               required
+              onChange={e =>
+                dispatch({
+                  type: 'field',
+                  fieldName: 'password_confirmation',
+                  payload: e.currentTarget.value,
+                })
+              }
             />
           </label>
         </div>
 
         <button className="ui button right floated" type='submit'>Register</button>
       </form>
-    </div>);
+    </div>)
   }
-}
