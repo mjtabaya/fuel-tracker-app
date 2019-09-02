@@ -18,7 +18,6 @@ export default class Home extends Component {
 
   handleSuccessfulAuth(data) {
     this.props.handleLogin(data);
-    //this.props.history.push('/dashboard');
   }
 
   handleLogoutClick() {
@@ -66,9 +65,6 @@ export default class Home extends Component {
             <i className="circular users icon"></i>
             Fuel Tracker App
           </h2>
-        }
-        {
-          this.props.user.role && <h1>Role: {this.props.user.role}</h1>
         }
         {
           this.props.loggedInStatus === "LOGGED_IN" && this.loggedInHeader()
