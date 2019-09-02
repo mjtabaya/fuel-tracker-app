@@ -32,24 +32,10 @@ class RefuellingHistoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /refuelling_histories/1
-  def update
-    if @history.update(history_params)
-      render json: @history
-    else
-      render json: @history.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /discords/1
-  def destroy
-    @history.destroy
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_history
+  def set_refuelling_history
     @history = RefuellingHistory.find(params[:id])
   end
 

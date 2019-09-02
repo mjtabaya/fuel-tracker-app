@@ -20,9 +20,9 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'faker', '~> 2.2'
   gem 'rspec', '~> 3.8'
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'faker', '~> 2.2'
 end
 
 group :development do
