@@ -75,10 +75,14 @@ Open the app on your chosen browser with the following url: http://localhost:300
   <img src="./img/initial-page.PNG" alt="Registration and Login page">
 </p>
 
+---
+
 ### Employee View - on employee's login
 <p align="center">
   <img src="./img/employee-page.PNG" alt="Employee-only view">
 </p>
+
+---
 
 ### Manager View - on manager's login
 <p align="center">
