@@ -70,8 +70,19 @@ $ rails s -p 3001
 
 Open the app on your chosen browser with the following url: http://localhost:3000
 
+### Initial Page - Registration/Login
 <p align="center">
-  <img src="./img/first-page.PNG" alt="Registration and Login page">
+  <img src="./img/initial-page.PNG" alt="Registration and Login page">
+</p>
+
+### Employee View - on employee's login
+<p align="center">
+  <img src="./img/employee-page.PNG" alt="Employee-only view">
+</p>
+
+### Manager View - on manager's login
+<p align="center">
+  <img src="./img/manager-page.PNG" alt="Manager-only view">
 </p>
 
 
