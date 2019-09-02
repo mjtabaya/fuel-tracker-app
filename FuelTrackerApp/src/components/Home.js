@@ -76,7 +76,7 @@ export default class Home extends Component {
           </h2>
         }
         {
-          this.props.loggedInStatus === "LOGGED_IN" && <h1>Welcome {this.props.user.first_name}</h1>
+          this.props.loggedInStatus === "LOGGED_IN" && <h1>Welcome, {this.props.user.first_name}</h1>
         }
         {
           this.props.user.role && <h1>Role: {this.props.user.role}</h1>
