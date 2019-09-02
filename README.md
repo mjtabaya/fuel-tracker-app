@@ -70,9 +70,16 @@ $ rails s -p 3001
 
 Open the app on your chosen browser with the following url: http://localhost:3000
 
-### Initial Page - Registration/Login
+### Initial Page - Login
 <p align="center">
-  <img src="./img/initial-page.PNG" alt="Registration and Login page">
+  <img src="./img/initial-page.PNG" alt="Login page">
+</p>
+
+---
+
+### Initial Page - Registration
+<p align="center">
+  <img src="./img/registration-modal.PNG" alt="Registration modal">
 </p>
 
 ---
@@ -113,7 +120,7 @@ https://docs.google.com/spreadsheets/d/1hs8iJfz_pEagrzLUYfqFdCA7fLmpi7Kl0VBIq3hd
   * Add specs/tests for react
   * Add search function for Manager View
   * Refactor Registration Form into a modal
-  
+
 ---
 
 > GitHub [@mjtabaya](https://github.com/mjtabaya)
