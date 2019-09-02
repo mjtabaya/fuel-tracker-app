@@ -1,94 +1,59 @@
 # frozen_string_literal: true
 
 require 'user'
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'validations' do
-    it 'should return errors' do
-      user = User.new(
-        first_name: '',
-        last_name: '',
-        role: '',
-        email: '',
-        password: ''
-      )
+    context 'validations' do
 
+    it 'should return errors' do
+      user = User.new()
       user.valid?
       expect(user.errors.size).to eq 6
     end
 
     it 'should pass' do
-      user = User.new(
-        first_name: 'Emplo',
-        last_name: 'Yee',
-        role: 'employee',
-        email: 'emplo@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      )
-
+      user = create(:user)
       expect(user.valid?).to eq true
     end
 
     it 'will check for certain roles' do
-      user = User.new(
-        first_name: 'unangalan',
-        last_name: 'hulingalan',
-        role: 'baduser',
-        email: 'baduser@baduser.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      )
-
-      user.valid?
-      has_role_error = user.errors.include?(:role)
+      bad_user = User.new(attributes_for(:user, role: 'baduser'))
+      bad_user.valid?
+      has_role_error = bad_user.errors.include?(:role)
       expect(has_role_error).to eq true
     end
   end
 
   context 'scope' do
     before(:each) do
-      User.new(
+      create(:user,
         first_name: 'Alpha',
         last_name: 'Anre',
         role: 'manager',
-        email: 'alpha@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      ).save
-      User.new(
+        email: 'alpha@gmail.com'
+      )
+      create(:user,
         first_name: 'Beta',
         last_name: 'Sorn',
         role: 'manager',
-        email: 'beta@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      ).save
-      User.new(
+        email: 'beta@gmail.com'
+      )
+      create(:user,
         first_name: 'Charlie',
         last_name: 'Threo',
-        role: 'employee',
-        email: 'charlie@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      ).save
-      User.new(
+        email: 'charlie@gmail.com'
+      )
+      create(:user,
         first_name: 'Delta',
         last_name: 'Feower',
-        role: 'employee',
-        email: 'delta@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      ).save
-      User.new(
+        email: 'delta@gmail.com'
+      )
+      create(:user,
         first_name: 'Echo',
         last_name: 'Funf',
-        role: 'employee',
-        email: 'echo@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      ).save
+        email: 'echo@gmail.com'
+      )
     end
 
     it 'should return managers' do
