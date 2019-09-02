@@ -4,7 +4,7 @@ require 'refuelling_histories_controller'
 require 'rails_helper'
 
 RSpec.describe RefuellingHistoriesController, type: :request do
-  context 'get/refuelling_histories' do
+  context 'get/refuelling_histories and create' do
 
     before(:each) do
       User.new(
