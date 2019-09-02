@@ -119,7 +119,6 @@ https://docs.google.com/spreadsheets/d/1hs8iJfz_pEagrzLUYfqFdCA7fLmpi7Kl0VBIq3hd
 
   * Add specs/tests for react
   * Add search function for Manager View
-  * Refactor Registration Form into a modal
 
 ---
 
