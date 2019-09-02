@@ -75,10 +75,14 @@ Open the app on your chosen browser with the following url: http://localhost:300
   <img src="./img/initial-page.PNG" alt="Registration and Login page">
 </p>
 
+---
+
 ### Employee View - on employee's login
 <p align="center">
   <img src="./img/employee-page.PNG" alt="Employee-only view">
 </p>
+
+---
 
 ### Manager View - on manager's login
 <p align="center">
@@ -107,7 +111,9 @@ https://docs.google.com/spreadsheets/d/1hs8iJfz_pEagrzLUYfqFdCA7fLmpi7Kl0VBIq3hd
 ## To-do
 
   * Add specs/tests for react
-
+  * Add search function for Manager View
+  * Refactor Registration Form into a modal
+  
 ---
 
 > GitHub [@mjtabaya](https://github.com/mjtabaya)
