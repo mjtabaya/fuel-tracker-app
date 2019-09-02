@@ -18,6 +18,7 @@ export default class Home extends Component {
     }
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this)
     this.handleLogoutClick = this.handleLogoutClick.bind(this)
   }
@@ -48,7 +49,7 @@ export default class Home extends Component {
       >
         <button onClick={this.handleCloseModal}
           className="ui button right floated">
-          Discard Changes
+          Cancel Registration
         </button>
         <br/><br/>
         <Registration
@@ -62,7 +63,6 @@ export default class Home extends Component {
   loginForm(){
     return (
       <div>
-        <h1>User Login</h1>
         <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/>
       </div>
     )
@@ -81,19 +81,20 @@ export default class Home extends Component {
         {
           this.props.loggedInStatus === "LOGGED_IN" &&
           <LoggedInHeader
+            show={this.state.showModal}
             user={this.props.user}
             onClick={()=>this.handleLogoutClick()}
           />
+        }
+        <Divider section />
+        {
+          this.props.loggedInStatus === "NOT_LOGGED_IN" && this.loginForm()
         }
         {
           this.props.loggedInStatus === "NOT_LOGGED_IN" &&
             <button onClick={()=>this.handleOpenModal()}
               className="ui button right floated"
             >Register</button>
-        }
-        <Divider section />
-        {
-          this.props.loggedInStatus === "NOT_LOGGED_IN" && this.loginForm()
         }
         {
           this.props.user.role === "employee" && <RefuellingHistoryForm user={this.props.user}/>
