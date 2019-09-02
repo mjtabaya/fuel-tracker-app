@@ -61,7 +61,6 @@ RSpec.describe RefuellingHistoriesController, type: :request do
       }
       post '/refuelling_histories', params: {id: user.id, refuelling_history: refuelling_history}
       parsed_body = JSON.parse(response.body)
-      pp parsed_body['status']
       expect(parsed_body['status']).to be == 'created'
     end
   end

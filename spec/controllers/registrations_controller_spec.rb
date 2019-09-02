@@ -16,7 +16,6 @@ RSpec.describe RegistrationsController, type: :request do
       }
       post '/registrations', params: { user: user }
       parsed_body = JSON.parse(response.body)
-      pp parsed_body['status']
       expect(parsed_body['status']).to be == 'created'
     end
   end
