@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'refuelling_history'
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe RefuellingHistory, type: :model do
   # fixtures :users, gonna take time to troubleshoot, settle with manual creation

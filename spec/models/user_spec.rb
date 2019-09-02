@@ -1,38 +1,24 @@
 # frozen_string_literal: true
 
 require 'user'
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'validations' do
-    it 'should return errors' do
-      user = User.new(
-        first_name: '',
-        last_name: '',
-        role: '',
-        email: '',
-        password: ''
-      )
+    context 'validations' do
 
+    it 'should return errors' do
+      user = User.new()
       user.valid?
       expect(user.errors.size).to eq 6
     end
 
     it 'should pass' do
-      user = User.new(
-        first_name: 'Emplo',
-        last_name: 'Yee',
-        role: 'employee',
-        email: 'emplo@gmail.com',
-        password: 'asdfasdf',
-        password_confirmation: 'asdfasdf'
-      )
-
+      user = create(:user)
       expect(user.valid?).to eq true
     end
 
     it 'will check for certain roles' do
-      user = User.new(
+      bad_user = User.new(
         first_name: 'unangalan',
         last_name: 'hulingalan',
         role: 'baduser',
@@ -41,8 +27,8 @@ RSpec.describe User, type: :model do
         password_confirmation: 'asdfasdf'
       )
 
-      user.valid?
-      has_role_error = user.errors.include?(:role)
+      bad_user.valid?
+      has_role_error = bad_user.errors.include?(:role)
       expect(has_role_error).to eq true
     end
   end
