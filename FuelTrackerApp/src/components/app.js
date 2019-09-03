@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import axios from 'axios'
 import Home from './Home';
-import Dashboard from './Dashboard';
 
 export default class App extends Component {
   constructor() {
@@ -70,16 +69,6 @@ export default class App extends Component {
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.loggedInStatus}
                   user={this.state.user}
-                />
-              )}
-            />
-            <Route
-              exact
-              path={'/dashboard'}
-              render={props => (
-                <Dashboard
-                  {...props}
-                  loggedInStatus={this.state.loggedInStatus}
                 />
               )}
             />
