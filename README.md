@@ -115,7 +115,7 @@ $ rails s -p 3001
 
 ---
 
-### Initial Page - Registration
+### Initial Page - Registration (modal)
 <p align="center">
   <img src="./img/registration-modal.PNG" alt="Registration modal">
 </p>
