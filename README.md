@@ -82,6 +82,7 @@ $ cd fuel-tracker-app
 # Start the app (runs on ports 3000 and 3001, configured in Procfile.dev)
 $ rake start
 ```
+Open the app on your chosen browser with the following url: http://localhost:3000
 
 ### (Alternative) Running the API and React in separate command lines
 
@@ -106,9 +107,6 @@ $ rails s -p 3001
 ```
 
 ## Screenshots
-
-
-Open the app on your chosen browser with the following url: http://localhost:3000
 
 ### Initial Page - Login
 <p align="center">
