@@ -7,6 +7,7 @@
 <p align="center">
   <a href="#technical-task">Technical Task</a> •
   <a href="#how-to-use">How To Use</a> •
+  <a href="#screenshots">Screenshots</a> •
   <a href="#download">Download</a> •
   <a href="#credits">Credits</a> •
   <a href="#development-logbook">Development Logbook</a>
@@ -39,6 +40,8 @@ To clone and run this application, you'll need the following installed on your c
 * [Git](https://git-scm.com)
 * [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com))
 
+### Setup
+
 From your command line:
 
 ```bash
@@ -51,22 +54,59 @@ $ cd fuel-tracker-app/FuelTrackerApp
 # Install dependencies
 $ npm install
 
-# Run the app
+# Migrate and seed the database
+$ rails db:migrate db:seed
+```
+
+For Testing:
+
+```bash
+# Go into the root directory
+$ cd fuel-tracker-app
+
+# Migrate the database for the test environment
+$ rails db:migrate RAILS_ENV=test
+
+# Run the specs/tests
+$ rspec
+```
+
+### Running the App
+
+From your command line:
+
+```bash
+# From inside the root directory (may also be ran from subfolders)
+$ cd fuel-tracker-app
+
+# Start the app (runs on ports 3000 and 3001, configured in Procfile.dev)
+$ rake start
+```
+
+### (Alternative) Running the API and React in separate command lines
+
+From the first command line:
+
+```bash
+# Go into the react app's directory
+$ cd fuel-tracker-app/FuelTrackerApp
+
+# Run the app (runs on port 3000 by default)
 $ npm start
 ```
 
 From a second command line:
 
 ```bash
-# Go into the repository
+# Go into the root directory
 $ cd fuel-tracker-app
-
-# Migrate and Seed the database
-$ rails db:migrate db:seed
 
 # Start Rails API from port 3001
 $ rails s -p 3001
 ```
+
+## Screenshots
+
 
 Open the app on your chosen browser with the following url: http://localhost:3000
 
