@@ -19,10 +19,9 @@ function formReducer(state, action) {
         isLoading: true,
       };
     }
-    case 'success': {
+    case 'reset_fields': {
       return {
-        ...state,
-        initialState
+        ...initialState
       };
     }
     case 'fail': {
@@ -78,7 +77,7 @@ export default function Registration(props) {
       }
     ).then(response => {
         if(response.data.status === 'created') {
-          dispatch({ type: 'success' });
+          dispatch({ type: 'reset_fields' });
           props.handleSuccessfulAuth(response.data);
         }
         if(response.data.status === 'failed') {
@@ -88,6 +87,11 @@ export default function Registration(props) {
     }).catch(error => {
       setRegistrationError(error);
     });
+  }
+
+  const handleReset = () => {
+    console.log('sposed to reset')
+    dispatch({ type: 'reset_fields' });
   }
 
     return (<div className='ui'>
@@ -109,6 +113,7 @@ export default function Registration(props) {
               type='text'
               name='first_name'
               placeholder='First Name'
+              value={first_name}
               required
               onChange={e =>
                 dispatch({
@@ -127,6 +132,7 @@ export default function Registration(props) {
               type='text'
               name='last_name'
               placeholder='Last Name'
+              value={last_name}
               required
               onChange={e =>
                 dispatch({
@@ -161,6 +167,7 @@ export default function Registration(props) {
               type='email'
               name='email'
               placeholder='Email'
+              value={email}
               required
               onChange={e =>
                 dispatch({
@@ -179,6 +186,7 @@ export default function Registration(props) {
               type='password'
               name='password'
               placeholder='Password'
+              value={password}
               required
               onChange={e =>
                 dispatch({
@@ -196,6 +204,7 @@ export default function Registration(props) {
             <input
               type='password'
               name='password_confirmation'
+              value={password_confirmation}
               placeholder='Password Confirmation'
               required
               onChange={e =>
@@ -208,10 +217,12 @@ export default function Registration(props) {
             />
           </label>
         </div>
-
         <button className="ui button right floated" type='submit' disabled={isLoading}>
           {isLoading ? 'Registering...' : 'Register'}
         </button>
       </form>
+      <button className="ui button right floated" onClick={() => handleReset()} disabled={isLoading}>
+        {isLoading ? 'Registering...' : 'Reset'}
+      </button>
     </div>)
   }
