@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import _ from 'lodash'
 import axios from 'axios';
-import { Container, Header, Segment, Icon, Dimmer, Loader, Divider, Label, Menu, Table } from 'semantic-ui-react'
+import { Table } from 'semantic-ui-react'
 
 export default class RefuellingHistoryList extends Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.state = {
       histories: {},
       column: null,
@@ -45,9 +44,7 @@ export default class RefuellingHistoryList extends Component {
     .then(response => response.data)
     .then((data) => {
      this.setState({ histories: data })
-     console.log("loading list")
     }).catch(error => {
-      console.log("registration error", error)
     });
   }
 
@@ -59,7 +56,6 @@ export default class RefuellingHistoryList extends Component {
     const { column, data, direction } = this.state
 
     if(!this.state.histories) {
-      console.log(this.state.histories)
       return (
         <div className='histories'>
           <h3>Refuelling Histories</h3>
@@ -67,7 +63,6 @@ export default class RefuellingHistoryList extends Component {
         </div>
       );
     } else {
-      console.log(this.state.histories)
       return (
         <div className='histories'>
           <h3>Refuelling Histories (click on headers to sort)</h3>

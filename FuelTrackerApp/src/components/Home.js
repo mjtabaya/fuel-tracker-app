@@ -100,7 +100,7 @@ export default class Home extends Component {
           this.props.user.role === "employee" && <RefuellingHistoryForm user={this.props.user}/>
         }
         {
-          this.props.user.role === "manager" && <RefuellingHistoryList histories={this.props.histories}/>
+          this.props.user.role === "manager" && <RefuellingHistoryList/>
         }
         {this.registrationForm()}
       </div>
