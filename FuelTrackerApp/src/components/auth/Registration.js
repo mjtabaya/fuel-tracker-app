@@ -90,7 +90,6 @@ export default function Registration(props) {
   }
 
   const handleReset = () => {
-    console.log('sposed to reset')
     dispatch({ type: 'reset_fields' });
   }
 

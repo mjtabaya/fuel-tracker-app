@@ -31,6 +31,11 @@ function formReducer(state, action) {
         submitted: true
       };
     }
+    case 'reset_fields': {
+      return {
+        ...initialState
+      };
+    }
     case 'fail': {
       return {
         ...state,
