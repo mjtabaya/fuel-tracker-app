@@ -39,12 +39,6 @@ function formReducer(state, action) {
     case 'fail': {
       return {
         ...state,
-        date_refuelled: '',
-        driver: '',
-        vehicle: '',
-        odometer_reading: '',
-        refuel_location: '',
-        liters_of_fuel: '',
         isLoading: false,
         submitted: false
       };
@@ -108,8 +102,8 @@ export default function RefuellingHistoryForm(props) {
       }).then(dispatch({ type: 'reset_fields' }))
     } catch (error)
       {
-        this.setState({error: error})
         dispatch({ type: 'fail' });
+        this.setState({error: error});
       }
     };
 
