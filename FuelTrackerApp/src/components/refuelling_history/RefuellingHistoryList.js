@@ -53,9 +53,9 @@ export default class RefuellingHistoryList extends Component {
   }
 
   render() {
-    const { column, data, direction } = this.state
+    const { histories, column, data, direction } = this.state
 
-    if(!this.state.histories) {
+    if(!histories) {
       return (
         <div className='histories'>
           <h3>Refuelling Histories</h3>
@@ -101,7 +101,7 @@ export default class RefuellingHistoryList extends Component {
               </Table.Header>
 
               <Table.Body>
-                {!!this.state.histories.length && this.state.histories.map((history, i) => (
+                {!!histories.length && histories.map((history, i) => (
                     <Table.Row key={i}>
                       <Table.Cell>{history.date_refuelled}</Table.Cell>
                       <Table.Cell>{history.driver}</Table.Cell>
