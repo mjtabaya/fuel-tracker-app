@@ -27,7 +27,8 @@ class RefuellingHistoriesController < ApplicationController
       }
     else
       render json: {
-        status: 500
+        status: :failed,
+        error: @history.errors.full_messages
       }
     end
   end

@@ -122,7 +122,7 @@ $ rails s -p 3001
 
 ---
 
-### Registration Message - on Errors (logs in on success)
+### Registration Message - on errors (logs in on success)
 <p align="center">
   <img src="./img/registration-error.PNG" alt="Registration error message">
 </p>
@@ -138,7 +138,14 @@ $ rails s -p 3001
 
 ### Employee View - on successful refuelling history submit
 <p align="center">
-  <img src="./img/refuelling-history-success.PNG" alt="Employee-only view">
+  <img src="./img/refuelling-history-success.PNG" alt="Refuelling History success">
+</p>
+
+---
+
+### Employee View - on errors
+<p align="center">
+  <img src="./img/refuelling-history-fail.PNG" alt="Refuelling History fail">
 </p>
 
 ---

@@ -15,7 +15,6 @@ function formReducer(state, action) {
     case 'submitting': {
       return {
         ...state,
-        error: '',
         isLoading: true,
       };
     }
@@ -27,8 +26,7 @@ function formReducer(state, action) {
     case 'fail': {
       return {
         ...state,
-        isLoading: false,
-        error: ''
+        isLoading: false
       };
     }
     default:

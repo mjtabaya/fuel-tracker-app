@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import useForm from "../custom_hooks/useForm";
 import axios, { AxiosPromise } from 'axios';
 
@@ -13,7 +13,7 @@ function formReducer(state, action) {
     case 'submitting': {
       return {
         ...state,
-        error: '',
+        formError: '',
         isLoading: true,
       };
     }
@@ -27,7 +27,7 @@ function formReducer(state, action) {
         refuel_location: '',
         liters_of_fuel: '',
         isLoading: false,
-        error: '',
+        formError: '',
         submitted: true
       };
     }
@@ -56,12 +56,13 @@ const initialState = {
   refuel_location: '',
   liters_of_fuel: '',
   isLoading: false,
-  error: '',
+  formError: '',
   submitted: false
 };
 
 export default function RefuellingHistoryForm(props) {
   const [state, dispatch] = useReducer(formReducer, initialState);
+  const [formError, setFormError] = useState('');
 
   const {
     date_refuelled,
@@ -71,7 +72,6 @@ export default function RefuellingHistoryForm(props) {
     refuel_location,
     liters_of_fuel,
     isLoading,
-    error,
     submitted } = state;
 
   const handleReset = () => {
@@ -99,17 +99,30 @@ export default function RefuellingHistoryForm(props) {
           if(response.data.status === 'created') {
             dispatch({ type: 'success' });
           }
+          if(response.data.status === 'failed') {
+            dispatch({ type: 'fail' });
+            setFormError(response.data.error);
+          }
       }).then(dispatch({ type: 'reset_fields' }))
     } catch (error)
       {
         dispatch({ type: 'fail' });
-        this.setState({error: error});
+        this.setState({formError: error});
       }
     };
 
   return ( <div className='ui'>
     <form className="ui form" id='refuelling-history-form' onSubmit={onSubmit}>
-      {error && <p className="error">{error}</p>}
+      {formError &&
+        <div class="ui negative message">
+          <div class="header">There are problems with your refuelling information</div>
+          <ul>
+          {formError.map((error) => (
+            <li>{error}</li>
+          ))}
+          </ul>
+        </div>
+      }
       {submitted && <div className="ui positive message">
                       <div className="header">
                         Refuelling log was successful
