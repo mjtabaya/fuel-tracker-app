@@ -29,7 +29,7 @@ const RefuellingHistoryForm = (props) => {
       liters_of_fuel
     } = values;
 
-    axios.post("http://localhost:3001/refuelling_histories",
+    axios.post("http://localhost:3001/api/v1/refuelling_histories",
       {
         id: props.user.id,
         refuelling_history: {

@@ -33,7 +33,7 @@ export default class Home extends Component {
   }
 
   handleLogoutClick() {
-    axios.delete('http://localhost:3001/logout')
+    axios.delete('http://localhost:3001/api/v1/logout')
          .then(response => {
            this.props.handleLogout();
          }).catch(error => {

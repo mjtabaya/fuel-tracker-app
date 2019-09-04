@@ -83,7 +83,7 @@ export default function RefuellingHistoryForm(props) {
     dispatch({ type: 'submitting' });
 
     try {
-      axios.post("http://localhost:3001/refuelling_histories",
+      axios.post("http://localhost:3001/api/v1/refuelling_histories",
         {
           id: props.user.id,
           refuelling_history: {

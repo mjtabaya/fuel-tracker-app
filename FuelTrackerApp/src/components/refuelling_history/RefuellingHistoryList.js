@@ -40,7 +40,7 @@ export default class RefuellingHistoryList extends Component {
   }
 
   loadList() {
-    axios.get("http://localhost:3001/refuelling_histories")
+    axios.get("http://localhost:3001/api/v1/refuelling_histories")
     .then(response => response.data)
     .then((data) => {
      this.setState({ histories: data })

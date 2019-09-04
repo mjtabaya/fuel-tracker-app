@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'sessions_controller'
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :request do
+RSpec.describe Api::V1::SessionsController, type: :request do
   context 'login and logout' do
     before(:each) do
       create(:user)
@@ -14,7 +13,7 @@ RSpec.describe SessionsController, type: :request do
         email: 'emplo@gmail.com',
         password: 'asdfasdf'
       }
-      post '/sessions', params: { user: user }
+      post '/api/v1/sessions', params: { user: user }
       parsed_body = JSON.parse(response.body)
       expect(parsed_body['logged_in']).to be == true
     end
@@ -24,8 +23,8 @@ RSpec.describe SessionsController, type: :request do
         email: 'emplo@gmail.com',
         password: 'asdfasdf'
       }
-      post '/sessions', params: { user: user }
-      delete '/logout'
+      post '/api/v1/sessions', params: { user: user }
+      delete '/api/v1/logout'
       parsed_body = JSON.parse(response.body)
       expect(parsed_body['logged_out']).to be == true
     end

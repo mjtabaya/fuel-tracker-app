@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'refuelling_histories_controller'
 require 'rails_helper'
 
-RSpec.describe RefuellingHistoriesController, type: :request do
+RSpec.describe Api::V1::RefuellingHistoriesController, type: :request do
   context 'get/refuelling_histories' do
     before(:each) do
       user = create(:user)
@@ -12,13 +11,13 @@ RSpec.describe RefuellingHistoriesController, type: :request do
     end
 
     it 'returns all refuelling histories' do
-      get '/refuelling_histories'
+      get '/api/v1/refuelling_histories'
       parsed_body = JSON.parse(response.body)
       expect(parsed_body.size).to be == 2
     end
 
     it 'returns a specific refuelling history' do
-      get '/refuelling_histories/1'
+      get '/api/v1/refuelling_histories/1'
       # exclusions over difference in formats
       parsed_body = JSON.parse(response.body)
                         .except('created_at', 'date_refuelled', 'updated_at', 'liters_of_fuel')
@@ -30,7 +29,7 @@ RSpec.describe RefuellingHistoriesController, type: :request do
   context 'create new refuelling_history' do
     it 'returns a created response' do
       user = create(:user)
-      post '/refuelling_histories',
+      post '/api/v1/refuelling_histories',
            params: { id: user.id, refuelling_history: attributes_for(:refuelling_history) }
       parsed_body = JSON.parse(response.body)
       expect(parsed_body['status']).to be == 'created'

@@ -62,7 +62,7 @@ export default function Registration(props) {
   const handleSubmit = async e => {
     e.preventDefault();
     dispatch({ type: 'submitting' });
-    axios.post("http://localhost:3001/registrations",
+    axios.post("http://localhost:3001/api/v1/registrations",
       {
         user: {
           first_name: first_name,
