@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import useForm from "./useForm";
+import useForm from "../custom_hooks/useForm";
 import axios, { AxiosPromise } from 'axios';
 
 function formReducer(state, action) {
@@ -29,6 +29,19 @@ function formReducer(state, action) {
         isLoading: false,
         error: '',
         submitted: true
+      };
+    }
+    case 'fail': {
+      return {
+        ...state,
+        date_refuelled: '',
+        driver: '',
+        vehicle: '',
+        odometer_reading: '',
+        refuel_location: '',
+        liters_of_fuel: '',
+        isLoading: false,
+        submitted: false
       };
     }
     default:
@@ -68,7 +81,6 @@ export default function RefuellingHistoryForm(props) {
 
   const onSubmit = async e => {
     e.preventDefault();
-    console.log('submit button clicked')
     dispatch({ type: 'submitting' });
 
     try {
@@ -88,12 +100,11 @@ export default function RefuellingHistoryForm(props) {
           if(response.data.status === 'created') {
             dispatch({ type: 'success' });
           }
-      }).then(clearState).catch(error => {
-        console.log("registration error", error);
-      });
+      }).then(clearState)
     } catch (error)
       {
-        dispatch({ type: 'FAIL' });
+        this.setState({error: error})
+        dispatch({ type: 'fail' });
       }
     };
 
