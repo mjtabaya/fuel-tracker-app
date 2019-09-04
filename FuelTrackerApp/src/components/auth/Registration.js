@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import useForm from "../custom_hooks/useForm";
 import axios from 'axios';
 import { Dropdown } from 'semantic-ui-react'
@@ -22,15 +22,14 @@ function formReducer(state, action) {
     case 'success': {
       return {
         ...state,
-        date_refuelled: '',
-        driver: '',
-        vehicle: '',
-        odometer_reading: '',
-        refuel_location: '',
-        liters_of_fuel: '',
+        initialState
+      };
+    }
+    case 'fail': {
+      return {
+        ...state,
         isLoading: false,
-        error: '',
-        submitted: true
+        error: ''
       };
     }
     default:
@@ -46,11 +45,12 @@ const initialState = {
   password: '',
   password_confirmation: '',
   isLoading: false,
-  registrationErrors: '',
+  registrationError: ''
 };
 
 export default function Registration(props) {
   const [state, dispatch] = useReducer(formReducer, initialState);
+  const [registrationError, setRegistrationError] = useState('');
 
   const {
     first_name,
@@ -58,7 +58,8 @@ export default function Registration(props) {
     role,
     email,
     password,
-    password_confirmation
+    password_confirmation,
+    isLoading
   } = state;
 
   const handleSubmit = async e => {
@@ -80,13 +81,27 @@ export default function Registration(props) {
           dispatch({ type: 'success' });
           props.handleSuccessfulAuth(response.data);
         }
+        if(response.data.status === 'failed') {
+          dispatch({ type: 'fail' });
+          setRegistrationError(response.data.error);
+        }
     }).catch(error => {
-      console.log("registration error", error);
+      setRegistrationError(error);
     });
   }
 
     return (<div className='ui'>
       <form className='ui form' onSubmit={handleSubmit}>
+        {registrationError &&
+          <div class="ui negative message">
+            <div class="header">There are problems with your registration</div>
+            <ul>
+            {registrationError.map((error) => (
+              <li>{error}</li>
+            ))}
+            </ul>
+          </div>
+        }
         <div className='field'>
           <label>
             First Name:
@@ -194,7 +209,9 @@ export default function Registration(props) {
           </label>
         </div>
 
-        <button className="ui button right floated" type='submit'>Register</button>
+        <button className="ui button right floated" type='submit' disabled={isLoading}>
+          {isLoading ? 'Registering...' : 'Register'}
+        </button>
       </form>
     </div>)
   }
