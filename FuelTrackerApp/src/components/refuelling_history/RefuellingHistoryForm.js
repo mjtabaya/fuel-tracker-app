@@ -80,9 +80,9 @@ export default function RefuellingHistoryForm(props) {
     error,
     submitted } = state;
 
-  const clearState = () => {
-    document.getElementById('refuelling-history-form').reset();
-  };
+  const handleReset = () => {
+    dispatch({ type: 'reset_fields' });
+  }
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -105,7 +105,7 @@ export default function RefuellingHistoryForm(props) {
           if(response.data.status === 'created') {
             dispatch({ type: 'success' });
           }
-      }).then(clearState)
+      }).then(dispatch({ type: 'reset_fields' }))
     } catch (error)
       {
         this.setState({error: error})
@@ -113,7 +113,7 @@ export default function RefuellingHistoryForm(props) {
       }
     };
 
-  return (
+  return ( <div className='ui'>
     <form className="ui form" id='refuelling-history-form' onSubmit={onSubmit}>
       {error && <p className="error">{error}</p>}
       {submitted && <div className="ui positive message">
@@ -123,7 +123,7 @@ export default function RefuellingHistoryForm(props) {
                       <p>You may enter a new entry or let the manager login</p>
                     </div>
       }
-      <p>Please check the form!</p>
+      <p>Please enter the refuelling information carefully.</p>
       <div className='field'>
         <label>
           Date Refuelled:
@@ -131,6 +131,7 @@ export default function RefuellingHistoryForm(props) {
           type='datetime-local'
           name='date_refuelled'
           placeholder='Date Refuelled'
+          value={date_refuelled}
           required
           onChange={e =>
             dispatch({
@@ -149,6 +150,7 @@ export default function RefuellingHistoryForm(props) {
           type='text'
           name='driver'
           placeholder='Driver Name'
+          value={driver}
           required
           onChange={e =>
             dispatch({
@@ -167,6 +169,7 @@ export default function RefuellingHistoryForm(props) {
           type='text'
           name='vehicle'
           placeholder='Vehicle Name'
+          value={vehicle}
           required
           onChange={e =>
             dispatch({
@@ -185,6 +188,7 @@ export default function RefuellingHistoryForm(props) {
           type='number'
           name='odometer_reading'
           placeholder='Odometer Reading'
+          value={odometer_reading}
           required
           onChange={e =>
             dispatch({
@@ -203,6 +207,7 @@ export default function RefuellingHistoryForm(props) {
           type='text'
           name='refuel_location'
           placeholder='Refuel Location'
+          value={refuel_location}
           required
           onChange={e =>
             dispatch({
@@ -221,6 +226,7 @@ export default function RefuellingHistoryForm(props) {
           type='number'
           name='liters_of_fuel'
           placeholder='Liters of Fuel'
+          value={liters_of_fuel}
           required
           onChange={e =>
             dispatch({
@@ -236,5 +242,9 @@ export default function RefuellingHistoryForm(props) {
         {isLoading ? 'Submitting...' : 'Submit'}
       </button>
     </form>
+    <button className="ui button right floated" onClick={() => handleReset()} disabled={isLoading}>
+      {isLoading ? 'Submitting...' : 'Reset'}
+    </button>
+  </div>
   )
 }
