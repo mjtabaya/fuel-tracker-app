@@ -21,9 +21,9 @@ RSpec.describe RefuellingHistoriesController, type: :request do
       get '/refuelling_histories/1'
       # exclusions over difference in formats
       parsed_body = JSON.parse(response.body)
-      .except('created_at', 'date_refuelled', 'updated_at', 'liters_of_fuel')
+                        .except('created_at', 'date_refuelled', 'updated_at', 'liters_of_fuel')
       expect(parsed_body).to be == RefuellingHistory.first.attributes
-      .except('created_at', 'date_refuelled', 'updated_at', 'liters_of_fuel')
+                                                    .except('created_at', 'date_refuelled', 'updated_at', 'liters_of_fuel')
     end
   end
 
@@ -31,7 +31,7 @@ RSpec.describe RefuellingHistoriesController, type: :request do
     it 'returns a created response' do
       user = create(:user)
       post '/refuelling_histories',
-            params: {id: user.id, refuelling_history: attributes_for(:refuelling_history)}
+           params: { id: user.id, refuelling_history: attributes_for(:refuelling_history) }
       parsed_body = JSON.parse(response.body)
       expect(parsed_body['status']).to be == 'created'
     end

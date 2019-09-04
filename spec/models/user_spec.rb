@@ -4,10 +4,9 @@ require 'user'
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-    context 'validations' do
-
+  context 'validations' do
     it 'should return errors' do
-      user = User.new()
+      user = User.new
       user.valid?
       expect(user.errors.size).to eq 6
     end
@@ -28,32 +27,27 @@ RSpec.describe User, type: :model do
   context 'scope' do
     before(:each) do
       create(:user,
-        first_name: 'Alpha',
-        last_name: 'Anre',
-        role: 'manager',
-        email: 'alpha@gmail.com'
-      )
+             first_name: 'Alpha',
+             last_name: 'Anre',
+             role: 'manager',
+             email: 'alpha@gmail.com')
       create(:user,
-        first_name: 'Beta',
-        last_name: 'Sorn',
-        role: 'manager',
-        email: 'beta@gmail.com'
-      )
+             first_name: 'Beta',
+             last_name: 'Sorn',
+             role: 'manager',
+             email: 'beta@gmail.com')
       create(:user,
-        first_name: 'Charlie',
-        last_name: 'Threo',
-        email: 'charlie@gmail.com'
-      )
+             first_name: 'Charlie',
+             last_name: 'Threo',
+             email: 'charlie@gmail.com')
       create(:user,
-        first_name: 'Delta',
-        last_name: 'Feower',
-        email: 'delta@gmail.com'
-      )
+             first_name: 'Delta',
+             last_name: 'Feower',
+             email: 'delta@gmail.com')
       create(:user,
-        first_name: 'Echo',
-        last_name: 'Funf',
-        email: 'echo@gmail.com'
-      )
+             first_name: 'Echo',
+             last_name: 'Funf',
+             email: 'echo@gmail.com')
     end
 
     it 'should return managers' do

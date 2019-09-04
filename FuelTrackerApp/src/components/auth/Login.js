@@ -38,7 +38,6 @@ export default class Login extends Component {
           this.setState({loginErrors: response.data.error});
         }
     }).catch(error => {
-      console.log("login error", error);
       this.setState({loginErrors: error})
     });
     event.preventDefault();
