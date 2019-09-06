@@ -16,7 +16,6 @@ module Api::V1
           user: user
         }
       else
-        pp 'fwoosh'
         render json: { status: 401, error: 'Invalid email/password combination' }
       end
     end
