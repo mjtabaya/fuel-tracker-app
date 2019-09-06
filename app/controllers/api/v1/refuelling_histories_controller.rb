@@ -17,7 +17,7 @@ module Api::V1
 
     # POST /refuelling_histories
     def create
-      @user = User.find(params[:id])
+      @user = User.find(session[:user_id])
       @history = @user.refuelling_histories.build(history_params)
       if @history.save
         session[:user_id] = @user.id
