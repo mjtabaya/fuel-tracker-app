@@ -5,8 +5,20 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   context 'validations' do
-    it 'should return errors' do
+    it 'blank should return errors' do
       user = User.new
+      expect(user.valid?).to eq false
+    end
+
+    it 'wrong data should return errors' do
+      user = User.new(
+        first_name: '',
+        last_name: '',
+        role: 'badrole',
+        email: 'asd.com',
+        password: 'asdf',
+        password_confirmation: 'zxcv'
+      )
       user.valid?
       expect(user.errors.size).to eq 6
     end
