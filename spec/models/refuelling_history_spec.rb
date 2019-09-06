@@ -4,15 +4,12 @@ require 'refuelling_history'
 require 'rails_helper'
 
 RSpec.describe RefuellingHistory, type: :model do
-  # fixtures :users, gonna take time to troubleshoot, settle with manual creation
-
   context 'validations' do
     before(:each) do
       create(:user)
     end
 
     it 'should return errors' do
-      # user = users(:employee)
       history = User.first.refuelling_histories.new(
         date_refuelled: '',
         driver: '',
